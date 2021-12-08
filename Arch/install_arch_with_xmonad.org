@@ -12,24 +12,24 @@
 	 5. Carregar ISO como disco óptico;
  3. Bootar sistema pela ISO do arch;
  4. Mudar layout do teclado com:
- #+begin_src bash
- ls /usr/share/kbd/keymaps/**/*.map.gz
- loadkeys br-abnt2
- #+end_src
+    #+begin_src bash
+    ls /usr/share/kbd/keymaps/**/*.map.gz
+    loadkeys br-abnt2
+    #+end_src
  5. Verificar boot. Se arquivos (ou diretório) não estão presentes, o modo de boot é BIOS. Se estão, UEFI:
- #+begin_src bash
- ls /sys/firmware/efi/efivars
- #+end_src
+    #+begin_src bash
+    ls /sys/firmware/efi/efivars
+    #+end_src
  6. Verificar conexão com internet pelo "state" da conexão física:
- #+begin_src bash
- ip link
- ping archlinux.org
- #+end_src
+    #+begin_src bash
+    ip link
+    ping archlinux.org
+    #+end_src
  7. Atualize o relógio do sistema:
- #+begin_src bash
- timedatectl set-ntp true
- timedatectl status
- #+end_src
+    #+begin_src bash
+    timedatectl set-ntp true
+    timedatectl status
+    #+end_src
  8. Particionar disco. Arch wiki recomenda o uso do comando fdisk. O canal distrotube sugere cfdisk por ser mais fácil e ter uma interface melhor. Selecione dos para partição de disco quando em máquina virtual:
  #+begin_src bash
  cfdisk
