@@ -31,114 +31,114 @@
     timedatectl status
     #+end_src
  8. Particionar disco. Arch wiki recomenda o uso do comando fdisk. O canal distrotube sugere cfdisk por ser mais fácil e ter uma interface melhor. Selecione dos para partição de disco quando em máquina virtual:
- #+begin_src bash
- cfdisk
- #+end_src
+    #+begin_src bash
+    cfdisk
+    #+end_src
  9. Crie duas partições (pelo menos). Uma para memória de swap e uma para o root (/);
  10. Formate as partições criadas (inclusive swap se tiver criado). Troque o "X" pela letra correta da unidade de disco (por exemplo "sda"):
- #+begin_src bash
-   mkfs.ext4 /dev/sdX1
-   mkswap /dev/sdX2
-   swapon /dev/sdX2
- #+end_src
+    #+begin_src bash
+      mkfs.ext4 /dev/sdX1
+      mkswap /dev/sdX2
+      swapon /dev/sdX2
+    #+end_src
  11. Monte o sistema de arquivos:
- #+begin_src bash
-   mount /dev/sdX1 /mnt
- #+end_src
+    #+begin_src bash
+      mount /dev/sdX1 /mnt
+    #+end_src
  12. Selecione os mirrors apropriados para download dos pacotes (escolha mirrors do Brasil e US) colocando-os no  topo da lista:
- #+begin_src bash
- vim /etc/pacman.d/mirrorlist
- # ... mover urls do Brasil e US para o topo da lista
- #+end_src
+    #+begin_src bash
+    vim /etc/pacman.d/mirrorlist
+    # ... mover urls do Brasil e US para o topo da lista
+    #+end_src
  13. Instale os pacotes base. Pacotes para instalar nessa etapa podem mudar. Consulte arch wiki. Editores de texto, xmonad, xorg e outros pacotes podem ser especificados nessa etapa, também:
- #+begin_src bash
- pacstrap /mnt base linux linux-firmware
- #+end_src
+    #+begin_src bash
+    pacstrap /mnt base linux linux-firmware
+    #+end_src
  14. Criar a tabela de sistema de arquivo (fstab):
- #+begin_src bash
-   genfstab -U /mnt >> /mnt/etc/fstab
- #+end_src
+    #+begin_src bash
+      genfstab -U /mnt >> /mnt/etc/fstab
+    #+end_src
  15. Mudar raiz da sessão para onde o novo sistema está sendo configurado:
- #+begin_src bash
-   arch-chroot /mnt
- #+end_src
+    #+begin_src bash
+      arch-chroot /mnt
+    #+end_src
  16. Corrigir "time zone" do sistema:
- #+begin_src bash
-   ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
-   hwclock --systohc
- #+end_src
+    #+begin_src bash
+      ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+      hwclock --systohc
+    #+end_src
  17. Configurar localização do sistema nos arquivos /etc/locale.gen e /etc/locale.conf:
- #+begin_src bash
- # ... edite arquivo /etc/locale.gen descomentando os locais desejados (como en_US.UTF-8 e pt_BR.UTF-8)
- locale-gen
- vim /etc/locale.conf
- # ... Adicione o idioma do sistema com "LANG=<idioma>", sem as aspas (exemplo: LANG=en_US.UTF-8)
- #+end_src
+    #+begin_src bash
+    # ... edite arquivo /etc/locale.gen descomentando os locais desejados (como en_US.UTF-8 e pt_BR.UTF-8)
+    locale-gen
+    vim /etc/locale.conf
+    # ... Adicione o idioma do sistema com "LANG=<idioma>", sem as aspas (exemplo: LANG=en_US.UTF-8)
+    #+end_src
  18. Configure o layout do teclado editando o arquivo /etc/vconsole.conf com:
- #+begin_src bash
- KEYMAP=br-abnt2 # ou br-latin1-us para teclado norte americano
- #+end_src
+    #+begin_src bash
+    KEYMAP=br-abnt2 # ou br-latin1-us para teclado norte americano
+    #+end_src
  19. Configuração de rede. Edite arquivo /etc/hostname com:
- #+begin_src bash
- myhostname
- #+end_src
+    #+begin_src bash
+    myhostname
+    #+end_src
  20. E arquivo /etc/hosts com, trocando "myhostname" pelo nome desejado da máquina:
- #+begin_src bash
- 127.0.0.1 localhost
- ::1 localhost
- 127.0.1.1 myhostname.localdomain myhostname
- #+end_src
+    #+begin_src bash
+    127.0.0.1 localhost
+    ::1 localhost
+    127.0.1.1 myhostname.localdomain myhostname
+    #+end_src
  21. Adicione uma senha para root:
- #+begin_src bash
-   passwd
- #+end_src
+    #+begin_src bash
+      passwd
+    #+end_src
  22. Instale o grub como boot loader:
- #+begin_src bash
-   pacman -S grub
-   grub-install /dev/sda
-   grub-mkconfig -o /boot/grub/grub.cfg
- #+end_src
+    #+begin_src bash
+      pacman -S grub
+      grub-install /dev/sda
+      grub-mkconfig -o /boot/grub/grub.cfg
+    #+end_src
  23. Instale o dhcpcd para acesso a internet:
- #+begin_src bash
-   pacman -S dhcpcd
- #+end_src
+    #+begin_src bash
+      pacman -S dhcpcd
+    #+end_src
  24. Reinicialize o sistema e boot do novo arch linux no sistema:
- #+begin_src bash
-   exit
-   reboot
- #+end_src
+    #+begin_src bash
+      exit
+      reboot
+    #+end_src
  25. Quando inicializer, provavelmente o sistema estará sem internet. Para habilitar o dhcpcd entre o comando:
- #+begin_src bash
-   systemctl enable dhcpcd.service
- #+end_src
+    #+begin_src bash
+      systemctl enable dhcpcd.service
+    #+end_src
  26. Entre no sistema como root e crie um usuário:
- #+begin_src bash
-   useradd -m <user_name>
-   usermode -aG video,audio,wheel <user_name>
- #+end_src
+    #+begin_src bash
+      useradd -m <user_name>
+      usermode -aG video,audio,wheel <user_name>
+    #+end_src
  27. Instale o pacote sudo e vim e torne-o o editor padrão do sistema:
- #+begin_src bash
-   pacman -S sudo vim
-   export EDITOR=vim
- #+end_src
+    #+begin_src bash
+      pacman -S sudo vim
+      export EDITOR=vim
+    #+end_src
  1. Abra o arquivo de sudo com o comando abaixo:
- #+begin_src bash
-   visudo
- #+end_src
+    #+begin_src bash
+      visudo
+    #+end_src
  27. Descomente a seguinte linha para que todos os usuários no grupo "wheel" tenham acesso ao sudo:
- #+begin_src bash
- # %wheel ALL=(ALL) ALL
- #+end_src
+    #+begin_src bash
+    # %wheel ALL=(ALL) ALL
+    #+end_src
  28. Crie uma senha para o novo usuário:
- #+begin_src bash
-   passwd <user_name>
- #+end_src
+    #+begin_src bash
+      passwd <user_name>
+    #+end_src
  29. Instale os pacotes xorg, xmonad, xmobar, lightdm-gtk-greeter
- #+begin_src bash
-   pacman -S xorg xmonad xmonad-contrib xmobar lightdm-gtk-greeter xterm
- #+end_src
+    #+begin_src bash
+      pacman -S xorg xmonad xmonad-contrib xmobar lightdm-gtk-greeter xterm
+    #+end_src
  30. Inicialize o greeter (lightDM) com:
- #+begin_src bash
-   systemctl enable lightdm.service
- #+end_src
+    #+begin_src bash
+      systemctl enable lightdm.service
+    #+end_src
  31. Reinicalize o sistema. Uma tela gráfica deverá abrir e dar acesso ao xmonad sobre Arch linux :)
