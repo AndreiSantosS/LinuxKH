@@ -1,7 +1,8 @@
 * Setup de um sistema Arch Linux com gerenciador de janelas X xmonad.
 ** Principais referências:
- Arch wiki: https://wiki.archlinux.org/
- Gentoo wiki: https://wiki.gentoo.org/wiki/Main_Page
+ [[https://wiki.archlinux.org/][Arch wiki]]
+
+ [[https://wiki.gentoo.org/wiki/Main_Page][Gentoo wiki]]
 ** Passo a passo:
  1. Baixar ISO do Arch: https://www.archlinux.org/
  2. Se estiver usando Virtualbox, baixar e instalar: https://www.virtualbox.org/
@@ -142,3 +143,4 @@
       systemctl enable lightdm.service
     #+end_src
  31. Reinicalize o sistema. Uma tela gráfica deverá abrir e dar acesso ao xmonad sobre Arch linux :)
+
