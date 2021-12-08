@@ -119,8 +119,8 @@ wintypes : {
 #+end_src
 * .xmobarrc
 
-Arquivo de inicialização do xmobar (\/home\/andrei\/.xmobarrc). O arquivo abaixo foi baseado no template encontrado na wiki.archlinux.org.
-Note que o mostrador de volume do áudio depende de um script bash que parseie o comand "amixer" (no arquivo, o script localiza-se em \/home\/andrei\/bin\/volume). 
+Arquivo de inicialização do xmobar (=/home/andrei/.xmobarrc=). O arquivo abaixo foi baseado no template encontrado na wiki.archlinux.org.
+Note que o mostrador de volume do áudio depende de um script bash que parseie o comand "amixer" (no arquivo, o script localiza-se em =/home/andrei/bin/volume=). 
 No campo "run Weather", note que a sigla SBCF é o código ICAO de Belo Horizonte (aeroporto de Confins). Conteúdo:
 #+begin_src haskell
 Config { 
