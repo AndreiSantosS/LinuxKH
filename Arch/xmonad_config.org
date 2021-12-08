@@ -218,12 +218,21 @@ Config {
 * Aplicações adicionais
 
 Algumas aplicações que são úteis com Xmonad:
+
 xmobar - barra de status;
+
 compton - compositor para transparência de janelas e outros eye candies;
+
 dmenu - execução de aplicações com atalhos do teclado;
+
 pcmanfm - Um file manager leve
+
 pulseaudio - Handler de audio
+
 alsamixer - controle do volume via terminal
+
 nitrogen - Aplicação que cuida do papel de parede (é inicializado pelo xmonad.hs com a flag "--restore" para restaurar o último papel de parede utilizado)
+
 plank - dock de programas;
+
 tint2 - barra de programas abertos;
