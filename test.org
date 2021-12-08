@@ -5,13 +5,23 @@
 * Org mode reference
   [[https://orgmode.org/worg/org-tutorials/org4beginners.html][Org for beginners]]
 
+* How to put in source code in the org files
   #+BEGIN_SRC bash
     ls /home/andreis
     for i in {1..10}; do
         echo "Value of i: $i"
     done
   #+END_SRC
+
+* Chamada que a namô está nesse momento
   Protocolo Vivo: 20218401061546
+
+* Todo lists
+
+** TODO To create a TODO item, just create an item and C-c C-t
+   To cycle through states, just keep pressing C-c C-t
+
+** DONE This task is Done
 * Welcome to Org mode
 
   Welcome, and thanks for trying out Org mode. Making outlines in
