@@ -5,6 +5,12 @@
 * Org mode reference
   [[https://orgmode.org/worg/org-tutorials/org4beginners.html][Org for beginners]]
 
+  #+BEGIN_SRC bash
+    ls /home/andreis
+    for i in {1..10}; do
+        echo "Value of i: $i"
+    done
+  #+END_SRC
   Protocolo Vivo: 20218401061546
 * Welcome to Org mode
 
