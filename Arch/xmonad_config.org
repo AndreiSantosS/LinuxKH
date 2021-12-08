@@ -1,6 +1,6 @@
 * xmonad.hs
 
-Um arquivo básico de configuração do xmonad (home\/andrei\/.xmonad\/xmonad.hs):
+Um arquivo básico de configuração do xmonad (/​​home/andrei/.xmonad/xmonad.hs):
 #+begin_src haskell
 import XMonad
 import XMonad.Config.Desktop
